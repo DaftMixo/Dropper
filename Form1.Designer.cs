@@ -22,6 +22,7 @@ namespace Dropper
                 this.notifyIcon.Visible = false;
 
                 UnregisterHotKey(this.Handle, 0);
+                UnregisterHotKey(this.Handle, 1);
 
                 components.Dispose();
             }
@@ -54,6 +55,7 @@ namespace Dropper
             this.CollapseCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,22 +73,23 @@ namespace Dropper
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(117, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
             // 
             // historyToolStripMenuItem
             // 
             this.historyToolStripMenuItem.Image = global::Dropper.Properties.Resources.History;
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.historyToolStripMenuItem.Text = "History";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CollapseCheck});
+            this.CollapseCheck,
+            this.toolStripMenuItem1});
             this.settingsToolStripMenuItem.Image = global::Dropper.Properties.Resources.Settings;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // CollapseCheck
@@ -95,14 +98,14 @@ namespace Dropper
             this.CollapseCheck.CheckOnClick = true;
             this.CollapseCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CollapseCheck.Name = "CollapseCheck";
-            this.CollapseCheck.Size = new System.Drawing.Size(166, 22);
+            this.CollapseCheck.Size = new System.Drawing.Size(180, 22);
             this.CollapseCheck.Text = "Collapse on close";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::Dropper.Properties.Resources.dismiss;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // panel1
@@ -112,6 +115,13 @@ namespace Dropper
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(284, 411);
             this.panel1.TabIndex = 1;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Hotkey";
+            this.toolStripMenuItem1.ToolTipText = "Alt + Shift + C";
             // 
             // Form1
             // 
@@ -189,6 +199,7 @@ namespace Dropper
         private ToolStripMenuItem exitToolStripMenuItem;
         private Panel panel1;
         private ToolStripMenuItem CollapseCheck;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

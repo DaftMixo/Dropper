@@ -24,6 +24,8 @@ namespace Dropper
 
             int id = 0;     // The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt + (int)KeyModifier.Shift, Keys.C.GetHashCode());   // Register Alt + Shift + C as global hotkey. 
+            id = 1;
+            RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt + (int)KeyModifier.Shift, Keys.H.GetHashCode());
         }
 
         protected override void WndProc(ref Message m)
@@ -42,8 +44,19 @@ namespace Dropper
                 int id = m.WParam.ToInt32();                                        // The id of the hotkey that was pressed.
 
                 // do something
-                GetColor();
+                if (id == 0)
+                    GetColor();
+                if (id == 1)
+                    UpdateState();
             }
+        }
+
+        private void UpdateState()
+        {
+            if (this.Visible == false)
+                this.Show();
+            else
+                this.Hide();
         }
 
         private void GetColor()
