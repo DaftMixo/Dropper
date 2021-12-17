@@ -33,7 +33,7 @@ namespace Dropper
         {
             if(this.CollapseCheck.Checked)
                 e.Cancel = true;
-            this.WindowState = FormWindowState.Minimized;
+            this.Hide();
         }
         
 
@@ -51,9 +51,9 @@ namespace Dropper
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CollapseCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CollapseCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,13 +71,13 @@ namespace Dropper
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(117, 70);
             // 
             // historyToolStripMenuItem
             // 
             this.historyToolStripMenuItem.Image = global::Dropper.Properties.Resources.History;
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.historyToolStripMenuItem.Text = "History";
             // 
             // settingsToolStripMenuItem
@@ -86,14 +86,23 @@ namespace Dropper
             this.CollapseCheck});
             this.settingsToolStripMenuItem.Image = global::Dropper.Properties.Resources.Settings;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // CollapseCheck
+            // 
+            this.CollapseCheck.Checked = true;
+            this.CollapseCheck.CheckOnClick = true;
+            this.CollapseCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CollapseCheck.Name = "CollapseCheck";
+            this.CollapseCheck.Size = new System.Drawing.Size(166, 22);
+            this.CollapseCheck.Text = "Collapse on close";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::Dropper.Properties.Resources.dismiss;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // panel1
@@ -103,15 +112,6 @@ namespace Dropper
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(284, 411);
             this.panel1.TabIndex = 1;
-            // 
-            // CollapseCheck
-            // 
-            this.CollapseCheck.Checked = true;
-            this.CollapseCheck.CheckOnClick = true;
-            this.CollapseCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CollapseCheck.Name = "CollapseCheck";
-            this.CollapseCheck.Size = new System.Drawing.Size(180, 22);
-            this.CollapseCheck.Text = "Collapse on close";
             // 
             // Form1
             // 
@@ -126,7 +126,7 @@ namespace Dropper
             this.Name = "Form1";
             this.ShowInTaskbar = false;
             this.Text = "Dropper history";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.TopMost = true;
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 

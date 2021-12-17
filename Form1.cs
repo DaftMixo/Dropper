@@ -44,22 +44,6 @@ namespace Dropper
                 // do something
                 GetColor();
             }
-
-            if (this.WindowState != org)
-                this.OnFormWindowStateChanged(EventArgs.Empty);
-        }
-
-        protected virtual void OnFormWindowStateChanged(EventArgs e)
-        {
-            switch (this.WindowState)
-            {
-                case FormWindowState.Minimized:
-                    TopMost = false;
-                    break;
-                case FormWindowState.Normal:
-                    TopMost = true;
-                    break;
-            }
         }
 
         private void GetColor()
@@ -110,7 +94,7 @@ namespace Dropper
 
         private void MenuShowHistory_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
+            this.Show();
         }
 
         private void MenuExit_Click(object sender, EventArgs e)
@@ -119,7 +103,11 @@ namespace Dropper
         }
         private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
+            if (this.Visible == false)
+                this.Show();
+            else
+                this.Hide();
+           
         }
         private void SettingsChanged(object sender, EventArgs e)
         {
