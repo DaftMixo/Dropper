@@ -182,6 +182,7 @@ namespace Dropper
 
             if (textBoxes.Count > 10)
             {
+                buttons[0].Click -= GetButtonColor;
                 buttons[0].Dispose();
                 buttons.RemoveAt(0);
                 textBoxes[0].Dispose();
