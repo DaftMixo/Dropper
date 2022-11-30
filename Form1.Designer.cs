@@ -52,10 +52,12 @@ namespace Dropper
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.CollapseCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,12 +87,21 @@ namespace Dropper
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyCheck,
             this.CollapseCheck,
+            this.toolStripSeparator1,
             this.toolStripMenuItem1});
             this.settingsToolStripMenuItem.Image = global::Dropper.Properties.Resources.Settings;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // CopyCheck
+            // 
+            this.CopyCheck.CheckOnClick = true;
+            this.CopyCheck.Name = "CopyCheck";
+            this.CopyCheck.Size = new System.Drawing.Size(180, 22);
+            this.CopyCheck.Text = "Copy to Clipboard";
             // 
             // CollapseCheck
             // 
@@ -100,6 +111,19 @@ namespace Dropper
             this.CollapseCheck.Name = "CollapseCheck";
             this.CollapseCheck.Size = new System.Drawing.Size(180, 22);
             this.CollapseCheck.Text = "Collapse on close";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Hotkeys";
+            this.toolStripMenuItem1.ToolTipText = "Alt + Shift + C - Get Color\r\nAlt + Shift + H - Show/Hide history";
             // 
             // exitToolStripMenuItem
             // 
@@ -115,13 +139,6 @@ namespace Dropper
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(284, 411);
             this.panel1.TabIndex = 1;
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "Hotkey";
-            this.toolStripMenuItem1.ToolTipText = "Alt + Shift + C";
             // 
             // Form1
             // 
@@ -149,6 +166,7 @@ namespace Dropper
             this.historyToolStripMenuItem.Click += MenuShowHistory_Click;
             this.exitToolStripMenuItem.Click += MenuExit_Click;
             this.CollapseCheck.CheckedChanged += SettingsChanged;
+            this.CopyCheck.CheckedChanged += SettingsChanged;
             this.notifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
         }
 
@@ -201,6 +219,8 @@ namespace Dropper
         private Panel panel1;
         private ToolStripMenuItem CollapseCheck;
         private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem CopyCheck;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }
 

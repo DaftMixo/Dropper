@@ -28,6 +28,12 @@ namespace Dropper
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt + (int)KeyModifier.Shift, Keys.H.GetHashCode());
         }
 
+        ~Form1()
+        {
+            UnregisterHotKey(this.Handle, 0);
+            UnregisterHotKey(this.Handle, 1);
+        }
+
         protected override void WndProc(ref Message m)
         {
             FormWindowState org = this.WindowState;
@@ -64,12 +70,12 @@ namespace Dropper
             Color color = GetPixel(Cursor.Position);
 
             string hexColor = HexConverter(color);
-            string rgbColor = RGBConverter(color);
+            //string rgbColor = RGBConverter(color);
 
-            Clipboard.Clear();
-            Clipboard.SetText(hexColor);
+            if(this.CopyCheck.Checked)
+                CopyToClipboard(hexColor);
 
-            foreach(TextBox item in textBoxes)
+            foreach (TextBox item in textBoxes)
             {
                 item.Location = new Point(item.Location.X, item.Location.Y + 50);
             }
@@ -79,6 +85,12 @@ namespace Dropper
             }
 
             AddItemOnPanel(color);
+        }
+
+        private void CopyToClipboard(string hexColor)
+        {
+            Clipboard.Clear();
+            Clipboard.SetText(hexColor);
         }
 
         private Color GetPixel(Point position)
@@ -124,12 +136,22 @@ namespace Dropper
         }
         private void SettingsChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.CollapseCheck = this.CollapseCheck.Checked;
-            Properties.Settings.Default.Save();
+            switch ((sender as ToolStripMenuItem).Name)
+            {
+                case "CollapseCheck":
+                    Properties.Settings.Default.CollapseCheck = this.CollapseCheck.Checked;
+                    Properties.Settings.Default.Save();
+                    break;
+                case "CopyCheck":
+                    Properties.Settings.Default.CopyToClipboard = this.CopyCheck.Checked;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
         }
         private void LoadSettings()
         {
             this.CollapseCheck.Checked = Properties.Settings.Default.CollapseCheck;
+            this.CopyCheck.Checked = Properties.Settings.Default.CopyToClipboard;
         }
 
         #endregion
