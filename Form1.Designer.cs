@@ -21,9 +21,6 @@ namespace Dropper
             {
                 this.notifyIcon.Visible = false;
 
-                UnregisterHotKey(this.Handle, 0);
-                UnregisterHotKey(this.Handle, 1);
-
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -50,6 +47,9 @@ namespace Dropper
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.TitleBar = new System.Windows.Forms.PictureBox();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,8 +57,8 @@ namespace Dropper
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleBar)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon
@@ -70,18 +70,59 @@ namespace Dropper
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.BackColor = System.Drawing.SystemColors.Control;
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.historyToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(117, 70);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Location = new System.Drawing.Point(0, 35);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 410);
+            this.panel1.TabIndex = 1;
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Location = new System.Drawing.Point(266, 0);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(35, 30);
+            this.CloseButton.TabIndex = 2;
+            this.CloseButton.TabStop = false;
+            this.CloseButton.Text = "X";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
+            // TitleBar
+            // 
+            this.TitleBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitleBar.Location = new System.Drawing.Point(0, 0);
+            this.TitleBar.Name = "TitleBar";
+            this.TitleBar.Size = new System.Drawing.Size(300, 35);
+            this.TitleBar.TabIndex = 3;
+            this.TitleBar.TabStop = false;
             // 
             // historyToolStripMenuItem
             // 
+            this.historyToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.historyToolStripMenuItem.Image = global::Dropper.Properties.Resources.History;
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.historyToolStripMenuItem.Text = "History";
             // 
             // settingsToolStripMenuItem
@@ -93,14 +134,14 @@ namespace Dropper
             this.toolStripMenuItem1});
             this.settingsToolStripMenuItem.Image = global::Dropper.Properties.Resources.Settings;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // CopyCheck
             // 
             this.CopyCheck.CheckOnClick = true;
             this.CopyCheck.Name = "CopyCheck";
-            this.CopyCheck.Size = new System.Drawing.Size(180, 22);
+            this.CopyCheck.Size = new System.Drawing.Size(171, 22);
             this.CopyCheck.Text = "Copy to Clipboard";
             // 
             // CollapseCheck
@@ -109,19 +150,19 @@ namespace Dropper
             this.CollapseCheck.CheckOnClick = true;
             this.CollapseCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CollapseCheck.Name = "CollapseCheck";
-            this.CollapseCheck.Size = new System.Drawing.Size(180, 22);
+            this.CollapseCheck.Size = new System.Drawing.Size(171, 22);
             this.CollapseCheck.Text = "Collapse on close";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
             this.toolStripMenuItem1.Text = "Hotkeys";
             this.toolStripMenuItem1.ToolTipText = "Alt + Shift + C - Get Color\r\nAlt + Shift + H - Show/Hide history";
             // 
@@ -129,23 +170,20 @@ namespace Dropper
             // 
             this.exitToolStripMenuItem.Image = global::Dropper.Properties.Resources.dismiss;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 411);
-            this.panel1.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 411);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(300, 450);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.TitleBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(300, 450);
@@ -155,26 +193,33 @@ namespace Dropper
             this.Text = "Dropper history";
             this.TopMost = true;
             this.contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TitleBar)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private void TrayMenuContext()
+        private void TrayMenuInit()
         {
-            this.historyToolStripMenuItem.Click += MenuShowHistory_Click;
-            this.exitToolStripMenuItem.Click += MenuExit_Click;
-            this.CollapseCheck.CheckedChanged += SettingsChanged;
-            this.CopyCheck.CheckedChanged += SettingsChanged;
-            this.notifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
+            historyToolStripMenuItem.Click += MenuShowHistory_Click;
+            exitToolStripMenuItem.Click += MenuExit_Click;
+            CollapseCheck.CheckedChanged += SettingsChanged;
+            CopyCheck.CheckedChanged += SettingsChanged;
+            notifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
         }
 
+        private void TitleInit()
+        {
+            TitleBar.MouseDown += new MouseEventHandler(TitleMouseDown);
+            TitleBar.MouseUp += new MouseEventHandler(TitleMouseUp);
+            TitleBar.MouseMove += new MouseEventHandler(TitleMouseMove);
+        }
 
         private void AddItemOnPanel(Color color)
         {
-            string hexColor = HexConverter(color);
-            string rgbColor = RGBConverter(color);
+            string hexColor = Utils.HexConverter(color);
+            string rgbColor = Utils.RGBConverter(color);
 
             TextBox textBox = new TextBox();
             textBox.Location = new System.Drawing.Point(50, 10);
@@ -191,6 +236,7 @@ namespace Dropper
             textBox.Parent = this.panel1;
 
             Button button = new Button();
+            button.FlatStyle = FlatStyle.Flat;
             button.Location = new System.Drawing.Point(10, 15);
             button.Size = new System.Drawing.Size(30, 30);
             button.Text = string.Empty;
@@ -221,6 +267,8 @@ namespace Dropper
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem CopyCheck;
         private ToolStripSeparator toolStripSeparator1;
+        private Button CloseButton;
+        private PictureBox TitleBar;
     }
 }
 
