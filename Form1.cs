@@ -21,6 +21,8 @@ namespace Dropper
             TrayMenuInit();
             TitleInit();
 
+            Region = System.Drawing.Region.FromHrgn(Utils.CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+
             LoadSettings();
 
             int id = 0;

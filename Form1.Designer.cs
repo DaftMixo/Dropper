@@ -47,9 +47,6 @@ namespace Dropper
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CloseButton = new System.Windows.Forms.Button();
-            this.TitleBar = new System.Windows.Forms.PictureBox();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +54,10 @@ namespace Dropper
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.TitleBar = new System.Windows.Forms.PictureBox();
+            this.TitleLable = new System.Windows.Forms.Label();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TitleBar)).BeginInit();
             this.SuspendLayout();
@@ -77,45 +78,6 @@ namespace Dropper
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(117, 70);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Location = new System.Drawing.Point(0, 35);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 410);
-            this.panel1.TabIndex = 1;
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.FlatAppearance.BorderSize = 0;
-            this.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
-            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Location = new System.Drawing.Point(266, 0);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(35, 30);
-            this.CloseButton.TabIndex = 2;
-            this.CloseButton.TabStop = false;
-            this.CloseButton.Text = "X";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
-            // TitleBar
-            // 
-            this.TitleBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitleBar.Location = new System.Drawing.Point(0, 0);
-            this.TitleBar.Name = "TitleBar";
-            this.TitleBar.Size = new System.Drawing.Size(300, 35);
-            this.TitleBar.TabIndex = 3;
-            this.TitleBar.TabStop = false;
             // 
             // historyToolStripMenuItem
             // 
@@ -173,6 +135,56 @@ namespace Dropper
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Location = new System.Drawing.Point(0, 40);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 410);
+            this.panel1.TabIndex = 1;
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Marlett", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseButton.Location = new System.Drawing.Point(253, 0);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(47, 32);
+            this.CloseButton.TabIndex = 2;
+            this.CloseButton.TabStop = false;
+            this.CloseButton.Text = "X";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
+            // TitleBar
+            // 
+            this.TitleBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitleBar.Location = new System.Drawing.Point(0, 0);
+            this.TitleBar.Name = "TitleBar";
+            this.TitleBar.Size = new System.Drawing.Size(300, 40);
+            this.TitleBar.TabIndex = 3;
+            this.TitleBar.TabStop = false;
+            // 
+            // TitleLable
+            // 
+            this.TitleLable.AutoSize = true;
+            this.TitleLable.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TitleLable.Location = new System.Drawing.Point(9, 4);
+            this.TitleLable.Name = "TitleLable";
+            this.TitleLable.Size = new System.Drawing.Size(140, 23);
+            this.TitleLable.TabIndex = 4;
+            this.TitleLable.Text = "Picked color list";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +192,7 @@ namespace Dropper
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(300, 450);
+            this.Controls.Add(this.TitleLable);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TitleBar);
@@ -195,6 +208,7 @@ namespace Dropper
             this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TitleBar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -214,6 +228,10 @@ namespace Dropper
             TitleBar.MouseDown += new MouseEventHandler(TitleMouseDown);
             TitleBar.MouseUp += new MouseEventHandler(TitleMouseUp);
             TitleBar.MouseMove += new MouseEventHandler(TitleMouseMove);
+
+            TitleLable.MouseDown += new MouseEventHandler(TitleMouseDown);
+            TitleLable.MouseUp += new MouseEventHandler(TitleMouseUp);
+            TitleLable.MouseMove += new MouseEventHandler(TitleMouseMove);
         }
 
         private void AddItemOnPanel(Color color)
@@ -269,6 +287,7 @@ namespace Dropper
         private ToolStripSeparator toolStripSeparator1;
         private Button CloseButton;
         private PictureBox TitleBar;
+        private Label TitleLable;
     }
 }
 
