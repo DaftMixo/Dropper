@@ -18,17 +18,12 @@ namespace Dropper
         public Form1()
         {
             InitializeComponent();
+            LoadSettings();
             TrayMenuInit();
             TitleInit();
+            InteropServicesInit();
 
-            Region = System.Drawing.Region.FromHrgn(Utils.CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
-
-            LoadSettings();
-
-            int id = 0;
-            Utils.RegisterHotKey(Handle, id, (int)KeyModifier.Alt + (int)KeyModifier.Shift, Keys.C.GetHashCode());
-            id = 1;
-            Utils.RegisterHotKey(Handle, id, (int)KeyModifier.Alt + (int)KeyModifier.Shift, Keys.H.GetHashCode());
+            SetDarkTheme(DarkThemeCheck.Checked);
         }
 
         protected override void WndProc(ref Message m)
@@ -67,6 +62,13 @@ namespace Dropper
                 Hide();
         }
 
+        private void LoadSettings()
+        {
+            this.CollapseCheck.Checked = Properties.Settings.Default.CollapseCheck;
+            this.CopyCheck.Checked = Properties.Settings.Default.CopyToClipboard;
+            this.DarkThemeCheck.Checked = Properties.Settings.Default.DarkTheme;
+        }
+
         #region Notify menu button methods
 
         private void MenuShowHistory_Click(object sender, EventArgs e)
@@ -98,12 +100,12 @@ namespace Dropper
                     Properties.Settings.Default.CopyToClipboard = this.CopyCheck.Checked;
                     Properties.Settings.Default.Save();
                     break;
+                case "DarkThemeCheck":
+                    Properties.Settings.Default.DarkTheme = this.DarkThemeCheck.Checked;
+                    Properties.Settings.Default.Save();
+                    SetDarkTheme(DarkThemeCheck.Checked);
+                    break;
             }
-        }
-        private void LoadSettings()
-        {
-            this.CollapseCheck.Checked = Properties.Settings.Default.CollapseCheck;
-            this.CopyCheck.Checked = Properties.Settings.Default.CopyToClipboard;
         }
 
         #endregion
@@ -135,7 +137,8 @@ namespace Dropper
             _startPoint = e.Location;
             _isDrag = true;
         }
-        #endregion
+
+        #endregion //==============================================
 
         private void GetButtonColor(object sender, EventArgs e)
         {
